@@ -16,23 +16,13 @@ elseif(isset($_GET["sport"]) and isset($_GET["competition"])){
 
 $stmt=$db->query($requete);
 $result=$stmt->fetchall(PDO::FETCH_ASSOC);
-
-
-try { 
-        // status is true if everything is fine
-        exit(json_encode(
-            array($result)
-        ));
-} catch(Exception $e) {
-    
-    echo json_encode(
-        array(
-            'status' => false,
-            'error' => $e -> getMessage(),
-            'error_code' => $e -> getCode()
-        )
-    );
-    exit;
-}
-
+foreach($result as $sportif)
+{
+    echo"
+    <div class='gallery'>
+    <a href='sportif/page_sportif.php?id=".$sportif["id_sportif"]."'>
+        <img src=".$sportif["carte"]." alt='' width='600' height='400'>
+        </a>
+    </div>";
+    }
 ?>

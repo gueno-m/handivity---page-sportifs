@@ -11,7 +11,8 @@ $db=new PDO('mysql:host=mysql;dbname=handivity;port=3306;charset=utf8', 'root', 
     <title>Parasportifs - Handivity</title>
     <link rel="stylesheet" href="css/parasportif.css">
     <link rel="stylesheet" href="css/selectric.css">
-     <link href="css/slick.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <link href="css/slick-theme.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed&display=swap" rel="stylesheet">
@@ -117,7 +118,7 @@ $db=new PDO('mysql:host=mysql;dbname=handivity;port=3306;charset=utf8', 'root', 
                 <!-- <input href="affiche_sportif.php" type="submit" value="Filtrer"> -->
            
                 <!-- Add event -->
-                <input onclick="retieiveFilterValues()" type="submit" value="Filtrer">
+                <input id="retieiveFilterValues" type="submit" value="Filtrer">
             </form>
             <form href="affiche_sportif.php" action="" method="get" class="recherche">
                <a href=""><img src="images/search.svg" alt="Rechercher"></a>
@@ -125,7 +126,15 @@ $db=new PDO('mysql:host=mysql;dbname=handivity;port=3306;charset=utf8', 'root', 
             </form>
         </div>
         
-        <div id="page" class="page"> </div>
+        <div id="page" class="page"> 
+        <span id="current-result"></span>
+            <?php
+            //    if (isset(empty($_GET['']) AND empty($_GET[''])))
+            //    include "./services/getAllSportif.php"; 
+
+                ?>
+              </div>
+        </div>
         
     </section>
 
@@ -240,8 +249,9 @@ $db=new PDO('mysql:host=mysql;dbname=handivity;port=3306;charset=utf8', 'root', 
     </script>
     
     <script>
-    // Click filter 
-    function retieiveFilterValues() {
+
+    document.getElementById("retieiveFilterValues").addEventListener("click", function(event){
+        event.preventDefault()
         var e = document.getElementById("championnat");
         var championnatId = e.options[e.selectedIndex].value;
 
@@ -251,9 +261,10 @@ $db=new PDO('mysql:host=mysql;dbname=handivity;port=3306;charset=utf8', 'root', 
         console.log("handisportId ", championnatId);
         
         let xhr = new XMLHttpRequest();
-
+        let url = "http://app.handivity.local";
+        
         // 2. Configure it: GET-request for the URL /article/.../load
-        xhr.open('GET', `http://app.handivity.local/services/filter.php?sport=${handisportId}&competition=${championnatId}`);
+        xhr.open('GET', `${url}/services/filter.php?sport=${handisportId}&competition=${championnatId}`);
 
         // 3. Send the request over the network
         xhr.send();
@@ -264,44 +275,23 @@ $db=new PDO('mysql:host=mysql;dbname=handivity;port=3306;charset=utf8', 'root', 
             alert(`Error ${xhr.status}: ${xhr.statusText}`); // e.g. 404: Not Found
         } else { // show the result
             console.log("xhr.response 123:", xhr.response);
-
-            alert(`Done, got ${xhr.response.length} bytes`); // responseText is the server
+            let currentResultOutput = document.getElementById('page');
+            currentResultOutput.innerHTML = xhr.response;     
         }
         };
 
         xhr.onprogress = function(event) {
         if (event.lengthComputable) {
-            alert(`Received ${event.loaded} of ${event.total} bytes`);
+            console.log(`Received ${event.loaded} of ${event.total} bytes`);
         } else {
-            alert(`Received ${event.loaded} bytes`); // no Content-Length
+            console.log(`Received ${event.loaded} bytes`); // no Content-Length
         }
 
         xhr.onerror = function() {
         alert("Request failed");
         };
-}
-        
-    }
-
-
-        // (function() {
-        //     'use strict';
-
-        //     $(document).ready(function() {
-
-        //         $(".filter").on('click', function(evt) {
-        //             //empêche le navigateur d'aller vers la page du href du lien
-        //             evt.preventDefault();
-
-        //             var page = $(this).attr("href");
-        //             $("#page").load("" + page);
-        //         })
-
-
-        //     });
-
-        // })();
-
+        }
+    });
     </script>
 
 </body>
