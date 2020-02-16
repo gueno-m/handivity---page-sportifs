@@ -1,0 +1,693 @@
+@font-face {
+    font-family: "Roboto-Light";
+    src: url("./fonts/Roboto-Light.woff") format("woff"),
+        url("./fonts/Roboto-Light.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto-Medium";
+    src: url("./fonts/Roboto-Medium.woff") format("woff"),
+        url("./fonts/Roboto-Medium.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("./fonts/Roboto-Regular.woff") format("woff"),
+        url("./fonts/Roboto-Regular.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Roboto-Black";
+    src: url("./fonts/Roboto-Black.woff") format("woff"),
+        url("./fonts/Roboto-Black.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "icones";
+    src: url("fonts/Flaticon.woff2") format("woff2"),
+        url("fonts/Flaticon.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.share:before {
+    content: "\f100";
+}
+
+.facebook:before {
+    content: "\f101";
+}
+
+.instagram:before {
+    content: "\f102";
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+}
+
+/***********************NAVIGATION*************************/
+
+
+.overlay {
+    height: 100vh;
+    width: 0;
+    position: fixed;
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    background-color: #209EBB;
+    overflow-x: hidden;
+    transition: width 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.overlay-content {
+    margin: auto;
+    width: 85%;
+    height: 90%;
+    padding-top: 150px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.overlay-content a {
+    padding: 50px 0px 10px 0px;
+    font-family: "Roboto-Regular";
+    border-bottom: 1px solid rgb(255, 255, 255, 0.3);
+    text-decoration: none;
+    transition: 0.3s;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.overlay-content a:hover {
+    color: #023047;
+}
+
+.reseaux {
+    width: 85%;
+    height: 10%;
+    margin: auto;
+    text-align: right;
+}
+
+.reseaux a {
+    font-family: "icones";
+    font-size: 2.4rem;
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+    transition: all 0.3s ease;
+}
+
+.reseaux a:hover {
+    color: #023047;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 64px;
+    z-index: 99;
+    position: fixed;
+    transition: all 0.5s ease;
+}
+
+.navbarbas {
+    background-color: rgba(255, 255, 255, 0.1);
+    /*    background-color: #023047;*/
+}
+
+.navbar a {
+    margin: auto;
+    display: flex;
+    margin-left: 2%;
+    transition: all 0.5s ease;
+}
+
+.navbar .logo {
+    margin: auto;
+}
+
+.menulogo {
+    fill: #FFFFFF;
+    transition: all .5s ease;
+}
+
+.icon {
+    height: 27px;
+    width: 20px;
+    cursor: pointer;
+    display: flex;
+    margin: auto;
+    margin-right: 2%;
+    transition: all 0.5s ease;
+}
+
+.hamburger {
+    height: 3px;
+    width: 100%;
+    background-color: black;
+    margin: auto;
+    transition: all 0.5s ease;
+}
+
+.hamburger:before,
+.hamburger:after {
+    content: '';
+    height: 3px;
+    width: 20px;
+    background-color: black;
+    position: absolute;
+    margin: auto;
+    transition: all 0.5s ease;
+}
+
+.hamburger:before {
+    margin-top: -8px;
+}
+
+.hamburger:after {
+    margin-top: 8px;
+}
+
+.icon.active .hamburger {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.icon.active .hamburger:before {
+    transform: rotate(45deg);
+    margin-top: 0px;
+}
+
+.icon.active .hamburger:after {
+    transform: rotate(135deg);
+    margin-top: 0px;
+}
+
+.openandclose {
+    width: 30%;
+}
+
+@media (max-width: 650px) {
+
+    .navbar {
+        display: flex;
+        height: 45px;
+        background-color: #023047;
+        box-shadow: 0px 5px 15px 2px rgba(0, 0, 0, 0.55);
+    }
+
+    .overlay {
+        display: flex;
+        height: calc(100vh - 45px);
+    }
+
+    .openandclose {
+        width: 100%;
+    }
+
+    .icon {
+        margin-right: 4%;
+    }
+
+    .navbar a {
+        margin-left: 4%;
+    }
+
+    .navbar .logo {
+        fill: white;
+    }
+
+    .hamburger {
+        background-color: white;
+    }
+
+    .hamburger:before,
+    .hamburger:after {
+        background-color: white;
+    }
+
+}
+
+/***********************SPORTIFS**************************/
+
+.entete {
+    background: radial-gradient(#FFFFFF, #D5D5D5);
+    width: 100%;
+    height: 100vh;
+    transition: all .2s ease;
+}
+
+.contenus {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    padding: 0;
+}
+
+.photo {
+    display: flex;
+    align-content: space-around;
+    width: 75%;
+    transition: all .5s ease;
+
+}
+
+.fleches {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 90%;
+    margin: auto;
+    margin-left: 8%;
+    margin-right: 0;
+    width: auto;
+}
+
+.fleches a:nth-child(1) {
+    margin-top: 100px;
+    transition: all .5s ease;
+}
+
+.fleches svg {
+    transition: all .5s ease;
+    z-index: 2;
+}
+
+.fleches svg #Trace_7,
+.fleches svg #Rectangle_48-2,
+.fleches svg #Rectangle_49-2,
+.fleches svg #Trace_8 {
+    transition: all .2s ease;
+}
+
+.fleches svg:hover #Trace_7 {
+    fill: #023047;
+}
+
+.fleches svg:hover #Rectangle_48-2 {
+    stroke: #023047;
+}
+
+.fleches svg:hover #Rectangle_49-2 {
+    fill: #023047;
+}
+
+.fleches svg:hover #Trace_8 {
+    fill: #FFF;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    align-content: space-around;
+    width: calc(100% - 75%);
+    border-left: solid 1px #209EBB;
+    transition: all .5s ease;
+
+}
+
+.retour {
+    width: 25px;
+    height: 25px;
+    transform: rotate(90deg);
+    margin-left: 25px;
+    margin-top: 40px;
+}
+
+.sportif {
+    height: 90vh;
+    margin: auto;
+    margin-left: 20%;
+    margin-bottom: 0;
+    animation-name: fadeInUp;
+    animation-duration: .8s;
+    transition: all .5s ease;
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+}
+
+.info div {
+    margin: auto;
+    margin-left: 0;
+    margin-top: 150px;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.info h1,
+.info h2 {
+
+    border-left: solid 5px #209EBB;
+    padding-left: 20px;
+    font-size: 1.4rem;
+    font-family: "Roboto-Light";
+    text-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.info h1 {
+    color: #209EBB;
+    font-family: "Roboto-Black";
+    text-transform: uppercase;
+}
+
+.info iframe {
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    /*    border: solid 2px black;*/
+    opacity: .8;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    /*    margin-top: 10px;*/
+    /*    margin-bottom: 80px;*/
+}
+
+.responsive {
+    display: none;
+}
+
+@media (max-width: 1200px) {
+
+
+    .sportif {
+        margin-left: 10%;
+    }
+
+    .photo {
+        width: 70%;
+    }
+
+    .info {
+        width: calc(100% - 70%);
+    }
+}
+
+@media (max-width: 920px) {
+
+    .sportif {
+        margin-left: 0%;
+        height: 85vh;
+    }
+
+    .photo {
+        width: 65%;
+    }
+
+    .info {
+        width: calc(100% - 65%);
+    }
+}
+
+@media (max-width: 840px) {
+
+    .sportif {
+        height: 80vh;
+        margin-left: -3%;
+    }
+
+    .fleches svg {
+        width: 64px;
+        height: 58px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    body {
+        background-color: #023047;
+    }
+
+    .entete {
+        margin: 0;
+        width: 100vw;
+        height: 100vh;
+        /*        background-image: url(images/profil.jpg);*/
+        background-position: center;
+        background-size: cover;
+        border-bottom-right-radius: 60px;
+        border-bottom-left-radius: 60px;
+    }
+
+    .photo {
+        width: 50%;
+    }
+
+    .fleches svg {
+        width: 58px;
+        height: 54px;
+    }
+
+    .fleches a:nth-child(1) {
+        margin-top: 50px;
+    }
+
+    .sportif {
+        display: none;
+    }
+
+    .info {
+        display: none;
+    }
+
+    .responsive {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        width: 50%;
+        text-align: right;
+        padding: 30px;
+    }
+
+    .responsive h1 {
+        font-size: 1.8rem;
+        font-family: "Roboto-Light";
+        margin-bottom: 0;
+        margin-top: 0;
+        text-transform: uppercase;
+    }
+
+    .responsive h1:nth-child(1) {
+        color: #209EBB;
+        font-family: "Roboto-Black";
+        text-shadow: 1px 1px 1px #000000;
+    }
+
+    .responsive h1 span {
+        display: block;
+    }
+
+}
+
+/*******************INFOS SPORTIFS*************************/
+
+.bio {
+    width: 100%;
+    height: 100vh;
+    background-color: #023047;
+    padding: 0;
+    display: flex;
+}
+
+.informations {
+    width: 50%;
+    height: 100vh;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+}
+
+.videopresentation {
+    display: none;
+}
+
+.informations h1 {
+    font-family: "Roboto-Black";
+    margin: auto;
+    width: 80%;
+    font-size: 2.5rem;
+    color: #209EBB;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    transition: all 0.5s ease;
+}
+
+.titrebas {
+    display: none;
+}
+
+.informations p {
+    margin: auto;
+    width: 80%;
+    font-family: "Roboto-Light";
+    margin-top: 50px;
+    margin-bottom: 0px;
+    font-size: 1.2rem;
+    color: white;
+    transition: all 0.5s ease;
+}
+
+.lespartager {
+    width: 80%;
+    display: flex;
+    margin: auto;
+    margin-top: 50px;
+}
+
+.lespartager a {
+    font-family: "icones";
+    font-size: 2.4rem;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 30px;
+    transition: all 0.3s ease;
+}
+
+.lespartager a:hover {
+    color: #209EBB;
+    transform: scale(1.2);
+}
+
+.photogauche {
+    width: 50%;
+    height: 100vh;
+    padding: 0;
+    background-position: center;
+    background-size: cover;
+}
+
+@media (max-width: 850px) {
+
+
+    .informations p {
+        font-size: 1rem;
+    }
+
+    .informations h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .bio {
+        height: auto;
+    }
+
+    .titrebas {
+        display: inline;
+    }
+
+    .videopresentation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        margin: auto;
+        margin-bottom: 40px;
+        margin-top: 80px;
+    }
+
+    .videopresentation iframe {
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        height: auto;
+        margin: auto;
+        border-radius: 25px;
+    }
+
+    .videopresentation p {
+        margin: auto;
+        font-family: "Roboto-Light";
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .photogauche {
+        display: none;
+        width: 0;
+    }
+
+    .informations {
+        width: 100%;
+        height: auto;
+    }
+
+    .informations h1 {
+        font-size: 1.4rem;
+        margin: auto;
+        text-align: center;
+    }
+
+    .informations p {
+        margin: auto;
+        margin-top: 4%;
+        /*        margin-bottom: 50px;*/
+        width: 85%;
+    }
+
+    .lespartager {
+        width: 85%;
+        margin-bottom: 50px;
+    }
+
+    .lespartager a {
+        font-size: 2rem;
+    }
+
+    .lespartager a:hover {
+        transform: none;
+    }
+
+}
