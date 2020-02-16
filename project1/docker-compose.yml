@@ -1,0 +1,51 @@
+version: '2'
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    container_name: handivity_nginx
+  
+  app:
+    image: thecodingmachine/php:7.2-v1-apache-node8
+    volumes:
+      - ./:/var/www/html:rw
+    environment:
+      - VIRTUAL_HOST=app.handivity.local
+      - PHP_INI_ERROR_REPORTING=E_ALL & ~E_USER_DEPRECATED
+      - PHP_EXTENSION_XDEBUG=1
+    env_file:
+      - .env
+    container_name: handivity_app
+    links:
+      - "phpmyadmin:handivity_phpmyadmin"
+
+  mysql:
+    image: mysql:5.7
+    env_file:
+      - .env
+    volumes:
+      - ./.docker/data/mysql/:/var/lib/mysql
+      - ./.docker/logs/mysql/:/var/log/mysql
+    container_name: handivity_mysql
+    ports:
+      -  3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      -  8080:8080
+    env_file:
+      - .env
+    environment:
+      PMA_HOST: mysql
+      VIRTUAL_HOST: phpmyadmin.handivity.local
+    container_name: handivity_phpmyadmin
+
+  postgres:
+    image: postgres
+    
+  
